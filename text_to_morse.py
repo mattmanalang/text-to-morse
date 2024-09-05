@@ -30,9 +30,9 @@ class MorseCode:
         """Takes input of a string and returns the morse code equivalent."""
         ciphertext = ""
         for character in plaintext:
-            ciphertext += MorseCode.MORSE_CHART.get(character.upper())
+            ciphertext += f"{MorseCode.MORSE_CHART.get(character.upper())} "
 
-        return ciphertext
+        return ciphertext.strip()
 
 
 morse = MorseCode()
