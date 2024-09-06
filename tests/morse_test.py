@@ -30,6 +30,13 @@ class TestMorseConverter(unittest.TestCase):
         self.assertEqual(morse.to_morse("a b"), ".- / -...")
         self.assertEqual(morse.to_morse("hi there"), ".... .. / - .... . .-. .")
 
+    def test_undefined_characters(self):
+        """Translating multiple words with the inclusion of characters not defined in Morse Code.
+        Undefined characters will be visually represented here using '#'."""
+        morse = MorseCode()
+        self.assertEqual(morse.to_morse("hello world!"), ".... . .-.. .-.. --- / .-- --- .-. .-.. -.. #")  # The exclamation point is not defined in Morse.
+        self.assertEqual(morse.to_morse("!#$%^& ***"), "# # # # # # / # # #")
+
 
 # Only needed if you are going to be running the tests manually using this file.
 if __name__ == "__main__":

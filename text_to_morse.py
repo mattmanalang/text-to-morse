@@ -32,6 +32,8 @@ class MorseCode:
         for character in plaintext:
             if character == ' ':
                 ciphertext += "/ "  # Spaces are visually represented here by a forward slash (/)
+            elif not MorseCode.MORSE_CHART.get(character.upper()):
+                ciphertext += "# "
             else:
                 ciphertext += f"{MorseCode.MORSE_CHART.get(character.upper())} "
 
