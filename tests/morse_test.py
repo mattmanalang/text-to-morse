@@ -7,7 +7,7 @@ class TestMorseConverter(unittest.TestCase):
     """Test Case Class"""
     def test_canary(self):
         """Canary test to make sure everything is working."""
-        self.assertTrue(True)
+        self.assertTrue(1+1, 2)
 
     def test_single_character(self):
         """Translating a single letter."""
