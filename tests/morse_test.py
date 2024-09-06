@@ -17,16 +17,18 @@ class TestMorseConverter(unittest.TestCase):
         self.assertEqual(morse.to_morse('?'), '..--..')
 
     def test_n_characters(self):
-        """Translating n-letters."""
+        """Translating n-letters. Each letter is separated by a pause that is equal to a dit."""
         morse = MorseCode()
         self.assertEqual(morse.to_morse('ab'), '.- -...')
         self.assertEqual(morse.to_morse('c1'), '-.-. .----')
         self.assertEqual(morse.to_morse('e7='), '. --... -...-')
 
     def test_n_characters_with_spaces(self):
-        """Translating n-letters with the addition of spaces. 
-        Spaces should be represented by a forward slash (/)"""
-        pass
+        """Translating n-letters with the addition of spaces between words. 
+        Spaces are audibly represented by 7 empty dits, but here we are visually using '/'."""
+        morse = MorseCode()
+        self.assertEqual(morse.to_morse("a b"), ".- / -...")
+        self.assertEqual(morse.to_morse("hi there"), ".... .. / - .... . .-. .")
 
 
 # Only needed if you are going to be running the tests manually using this file.

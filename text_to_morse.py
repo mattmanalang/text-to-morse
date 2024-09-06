@@ -30,9 +30,13 @@ class MorseCode:
         """Takes input of a string and returns the morse code equivalent."""
         ciphertext = ""
         for character in plaintext:
-            ciphertext += f"{MorseCode.MORSE_CHART.get(character.upper())} "
+            if character == ' ':
+                ciphertext += "/ "  # Spaces are visually represented here by a forward slash (/)
+            else:
+                ciphertext += f"{MorseCode.MORSE_CHART.get(character.upper())} "
 
         return ciphertext.strip()
 
 
 morse = MorseCode()
+print(morse.to_morse("Hello world"))
