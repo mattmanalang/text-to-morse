@@ -1,6 +1,8 @@
 """Unit Testing for the Text-to-Morse program."""
 
 import unittest
+from io import TextIOWrapper
+
 from text_to_morse import MorseCode
 
 class TestMorseConverter(unittest.TestCase):
@@ -34,8 +36,15 @@ class TestMorseConverter(unittest.TestCase):
         """Translating multiple words with the inclusion of characters not defined in Morse Code.
         Undefined characters will be visually represented here using '#'."""
         morse = MorseCode()
-        self.assertEqual(morse.to_morse("hello world!"), ".... . .-.. .-.. --- / .-- --- .-. .-.. -.. #")  # The exclamation point is not defined in Morse.
+        # The exclamation point is not defined in Morse.
+        self.assertEqual(morse.to_morse("hello world!"),
+                         ".... . .-.. .-.. --- / .-- --- .-. .-.. -.. #")
         self.assertEqual(morse.to_morse("!#$%^& ***"), "# # # # # # / # # #")
+
+    def test_file_writer(self):
+        """Testing for successful file creation."""
+        morse = MorseCode()
+        self.assertIsInstance(morse.write_to_file("test"), TextIOWrapper)
 
 
 # Only needed if you are going to be running the tests manually using this file.
