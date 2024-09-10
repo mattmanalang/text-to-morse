@@ -27,16 +27,20 @@ class MorseCode:
     def __init__(self) -> None:
         pass
 
+    def _format_text(self, text) -> str:
+        return text.upper().strip()
+
     def to_morse(self, plaintext):
         """Takes input of a string and returns the morse code equivalent."""
+        adjusted_plaintext = self._format_text(plaintext)
         ciphertext = ""
-        for character in plaintext:
+        for character in adjusted_plaintext:
             if character == ' ':
                 ciphertext += "/ "  # Spaces are visually represented here by a forward slash (/)
-            elif not MorseCode.MORSE_CHART.get(character.upper()):
+            elif not MorseCode.MORSE_CHART.get(character):
                 ciphertext += "# "
             else:
-                ciphertext += f"{MorseCode.MORSE_CHART.get(character.upper())} "
+                ciphertext += f"{MorseCode.MORSE_CHART.get(character)} "
 
         return ciphertext.strip()
 
